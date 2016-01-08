@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutBackground">
+
+    <ImageView
+        android:id="@+id/pion1"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
+
+    <ImageView
+        android:id="@+id/pion2"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
+
+    <ImageView
+        android:id="@+id/pion3"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
+
+    <ImageView
+        android:id="@+id/pion4"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:id="@+id/layoutTrouver"
+        android:layout_centerInParent="true"
+        android:background="#ff7a7a"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trouver le"
+            android:id="@+id/tvType"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:textSize="50dp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/tvQuestion"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:textSize="50dp"
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bAnswer1"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bAnswer2"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bAnswer3"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bAnswer4"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
