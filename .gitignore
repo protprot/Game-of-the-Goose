@@ -38,3 +38,10 @@ proguard/
 
 # Log Files
 *.log
+GameoftheGoose/build.gradle
+GameoftheGoose/gradle.properties
+GameoftheGoose/gradlew
+GameoftheGoose/gradlew.bat
+GameoftheGoose/settings.gradle
+GameoftheGoose/gradle/wrapper/gradle-wrapper.jar
+GameoftheGoose/gradle/wrapper/gradle-wrapper.properties
