@@ -148,21 +148,25 @@ public class PlayersActivity extends AppCompatActivity {
         String[] displayedValues = new String[] {"15 secondes", "30 secondes", "45 secondes"};
 
         pickerAnswerTime1 = (NumberPicker) findViewById(R.id.pickerAnswerTime1);
+        pickerAnswerTime1.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         pickerAnswerTime1.setMinValue(0);
         pickerAnswerTime1.setMaxValue(2);
         pickerAnswerTime1.setDisplayedValues(displayedValues);
 
         pickerAnswerTime2 = (NumberPicker) findViewById(R.id.pickerAnswerTime2);
+        pickerAnswerTime2.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         pickerAnswerTime2.setMinValue(0);
         pickerAnswerTime2.setMaxValue(2);
         pickerAnswerTime2.setDisplayedValues(displayedValues);
 
         pickerAnswerTime3 = (NumberPicker) findViewById(R.id.pickerAnswerTime3);
+        pickerAnswerTime3.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         pickerAnswerTime3.setMinValue(0);
         pickerAnswerTime3.setMaxValue(2);
         pickerAnswerTime3.setDisplayedValues(displayedValues);
 
         pickerAnswerTime4 = (NumberPicker) findViewById(R.id.pickerAnswerTime4);
+        pickerAnswerTime4.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         pickerAnswerTime4.setMinValue(0);
         pickerAnswerTime4.setMaxValue(2);
         pickerAnswerTime4.setDisplayedValues(displayedValues);

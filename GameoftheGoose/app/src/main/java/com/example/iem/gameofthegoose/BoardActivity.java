@@ -1,13 +1,18 @@
 package com.example.iem.gameofthegoose;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardActivity extends AppCompatActivity {
 
@@ -20,10 +25,15 @@ public class BoardActivity extends AppCompatActivity {
     ImageView pion4;
 
     LinearLayout layoutTrouver;
+    RelativeLayout layoutCase;
 
     Settings sets;
 
     int nbPlayers;
+
+    int nbCase;
+
+    List<Case> listCase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +66,10 @@ public class BoardActivity extends AppCompatActivity {
         listenerPion();
 
         initPopup();
+
+        calculNbCase();
+
+        createCase();
     }
 
     @Override
@@ -208,5 +222,58 @@ public class BoardActivity extends AppCompatActivity {
         layoutTrouver = (LinearLayout) findViewById(R.id.layoutTrouver);
         //+
         // ,layoutTrouver.setVisibility(View.VISIBLE);
+    }
+
+    public void calculNbCase() {
+
+        nbCase = (int) (((float) ((float) (sets.getGameTime() * 60) / (getMinAnswerTime() + 30)) / nbPlayers) * 3);
+
+        if (nbCase < 10)
+            nbCase = 10;
+
+
+    }
+
+    public int getMinAnswerTime() {
+
+        int min = 5000;
+
+        for (int i=0 ; i<nbPlayers ; i++) {
+            if (sets.listPlayer.get(i).getAnswerTime() < min)
+                min = sets.listPlayer.get(i).getAnswerTime();
+        }
+
+        return min;
+    }
+
+    public void createCase() {
+
+        final float[] x = {0};
+
+        layoutCase = (RelativeLayout) findViewById(R.id.layoutCase);
+
+        listCase = new ArrayList<>();
+
+        for (int i=0 ; i<nbCase ; i++) {
+
+            final ImageView imageView = new ImageView(this);
+            imageView.setImageResource(R.drawable.case_white);
+            imageView.setPadding(20, 20, 20, 20);
+
+            ViewTreeObserver vto = imageView.getViewTreeObserver();
+            vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    imageView.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                    imageView.setX(x[0]);
+                    x[0] = x[0] + imageView.getMeasuredWidth();
+                    return true;
+                }
+            });
+
+            layoutCase.addView(imageView);
+        }
+
     }
 }

@@ -10,12 +10,14 @@ public class Player implements Serializable {
     String name;
     int image;
     int answerTime;
+    int currentCase;
 
     public Player (String name, int image, int answerTime) {
 
         this.name = name;
         this.image = image;
         this.answerTime = answerTime;
+        this.currentCase = 0;
     }
 
     public String getName() {
