@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     NumberPicker pickerPlayer;
     NumberPicker pickerDifficulty;
-    NumberPicker pickerAnswerTime;
+    NumberPicker pickerNbDice;
     NumberPicker pickerGameTime;
     Button bNext;
 
@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
         pickerDifficulty.setMaxValue(4);
         pickerDifficulty.setDisplayedValues(new String[]{"1", "2", "3", "4"});
 
-        pickerAnswerTime = (NumberPicker) findViewById(R.id.pickerAnswerTime);
-        pickerAnswerTime.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerAnswerTime.setMinValue(1);
-        pickerAnswerTime.setMaxValue(4);
-        pickerAnswerTime.setDisplayedValues(new String[]{"30 secondes", "1 minute", "2 minutes", "3 minutes"});
+        pickerNbDice = (NumberPicker) findViewById(R.id.pickerNbDice);
+        pickerNbDice.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        pickerNbDice.setMinValue(1);
+        pickerNbDice.setMaxValue(2);
+        pickerNbDice.setDisplayedValues(new String[]{"1 dé", "2 dés"});
 
         pickerGameTime = (NumberPicker) findViewById(R.id.pickerGameTime);
         pickerGameTime.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         pickerGameTime.setMinValue(1);
         pickerGameTime.setMaxValue(4);
-        pickerGameTime.setDisplayedValues(new String[]{"30 minutes", "45 minutes", "1 heure", "2 heures"});
+        pickerGameTime.setDisplayedValues(new String[]{"5 minutes", "10 minutes", "15 minutes", "20 minutes"});
     }
 
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Settings s = new Settings(pickerPlayer.getValue(), pickerDifficulty.getValue(), pickerAnswerTime.getValue(), pickerGameTime.getValue());
+                Settings s = new Settings(pickerPlayer.getValue(), pickerDifficulty.getValue(), pickerNbDice.getValue(), pickerGameTime.getValue());
 
                 Intent i = new Intent(MainActivity.this, PlayersActivity.class);
                 i.putExtra("settings", s);

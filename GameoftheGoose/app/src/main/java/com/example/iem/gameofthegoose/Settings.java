@@ -11,42 +11,29 @@ public class Settings implements Serializable {
 
     int nbPlayer;
     int lvlDifficulty;
-    int answerTime;
+    int nbDice;
     int gameTime;
     List<Player> listPlayer;
 
-    public Settings (int pickerPlayer, int pickerDifficulty, int pickerAnswerTime, int pickerGameTime) {
+    public Settings (int pickerPlayer, int pickerDifficulty, int nbDice, int pickerGameTime) {
 
-        nbPlayer = pickerPlayer;
-        lvlDifficulty = pickerDifficulty;
-
-        switch (pickerAnswerTime) {
-            case 1:
-                answerTime = 30;
-                break;
-            case 2:
-                answerTime = 60;
-                break;
-            case 3:
-                answerTime = 120;
-                break;
-            case 4:
-                answerTime = 180;
-                break;
-        }
+        this.nbPlayer = pickerPlayer;
+        this.lvlDifficulty = pickerDifficulty;
+        this.nbDice = nbDice;
 
         switch (pickerGameTime) {
             case 1:
-                gameTime = 30;
+                this.gameTime = 5;
                 break;
             case 2:
-                gameTime = 45;
+                this.gameTime = 10;
                 break;
             case 3:
-                gameTime = 60;
+                this.gameTime = 15;
                 break;
             case 4:
-                gameTime = 120;
+                this.gameTime = 20;
+                break;
         }
 
         listPlayer = new ArrayList<>();
@@ -60,8 +47,8 @@ public class Settings implements Serializable {
         return lvlDifficulty;
     }
 
-    public int getAnswerTime() {
-        return answerTime;
+    public int getNbDice() {
+        return nbDice;
     }
 
     public int getGameTime() {
@@ -73,7 +60,7 @@ public class Settings implements Serializable {
 
         String s = "nb Joueurs : " + nbPlayer + "\n" +
         "lvl Difficulté : " + lvlDifficulty + "\n" +
-        "Temps réponse : " + answerTime + "\n" +
+        "Nombre de dé(s) : " + nbDice + "\n" +
         "Temps Jeu : " + gameTime + "\n";
 
         for (int i=0 ; i<listPlayer.size() ; i++){

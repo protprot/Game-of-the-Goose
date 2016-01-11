@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,11 @@ public class PlayersActivity extends AppCompatActivity {
     EditText etPlayer2;
     EditText etPlayer3;
     EditText etPlayer4;
+
+    NumberPicker pickerAnswerTime1;
+    NumberPicker pickerAnswerTime2;
+    NumberPicker pickerAnswerTime3;
+    NumberPicker pickerAnswerTime4;
 
     Button bPlay;
 
@@ -76,6 +82,7 @@ public class PlayersActivity extends AppCompatActivity {
         setNumberPlayer(sets.getNbPlayer());
 
         initImageButton();
+        initPickerAnswerTime();
 
         initButton();
     }
@@ -134,6 +141,33 @@ public class PlayersActivity extends AppCompatActivity {
                 ibPlayer4.setImageResource(pionImage[getImageId(4)]);
             }
         });
+    }
+
+    public void initPickerAnswerTime() {
+
+        String[] displayedValues = new String[] {"15 secondes", "30 secondes", "45 secondes"};
+
+        pickerAnswerTime1 = (NumberPicker) findViewById(R.id.pickerAnswerTime1);
+        pickerAnswerTime1.setMinValue(0);
+        pickerAnswerTime1.setMaxValue(2);
+        pickerAnswerTime1.setDisplayedValues(displayedValues);
+
+        pickerAnswerTime2 = (NumberPicker) findViewById(R.id.pickerAnswerTime2);
+        pickerAnswerTime2.setMinValue(0);
+        pickerAnswerTime2.setMaxValue(2);
+        pickerAnswerTime2.setDisplayedValues(displayedValues);
+
+        pickerAnswerTime3 = (NumberPicker) findViewById(R.id.pickerAnswerTime3);
+        pickerAnswerTime3.setMinValue(0);
+        pickerAnswerTime3.setMaxValue(2);
+        pickerAnswerTime3.setDisplayedValues(displayedValues);
+
+        pickerAnswerTime4 = (NumberPicker) findViewById(R.id.pickerAnswerTime4);
+        pickerAnswerTime4.setMinValue(0);
+        pickerAnswerTime4.setMaxValue(2);
+        pickerAnswerTime4.setDisplayedValues(displayedValues);
+
+
     }
 
     public int getImageId(int numPion) {
@@ -199,33 +233,47 @@ public class PlayersActivity extends AppCompatActivity {
         Player p;
 
         if (etPlayer1.getText().length() == 0)
-            p = new Player("Joueur 1", pionImage[getCurrentPosition(1)]);
+            p = new Player("Joueur 1", pionImage[getCurrentPosition(1)], getAnswerTime(pickerAnswerTime1.getValue()));
         else
-            p = new Player(etPlayer1.getText().toString(), pionImage[getCurrentPosition(1)]);
+            p = new Player(etPlayer1.getText().toString(), pionImage[getCurrentPosition(1)], getAnswerTime(pickerAnswerTime1.getValue()));
         sets.addPlayer(p);
 
         if (sets.getNbPlayer() > 1) {
             if (etPlayer2.getText().length() == 0)
-                p = new Player("Joueur 2", pionImage[getCurrentPosition(2)]);
+                p = new Player("Joueur 2", pionImage[getCurrentPosition(2)], getAnswerTime(pickerAnswerTime1.getValue()));
             else
-                p = new Player(etPlayer2.getText().toString(), pionImage[getCurrentPosition(2)]);
+                p = new Player(etPlayer2.getText().toString(), pionImage[getCurrentPosition(2)], getAnswerTime(pickerAnswerTime2.getValue()));
             sets.addPlayer(p);
         }
 
         if (sets.getNbPlayer() > 2) {
             if (etPlayer3.getText().length() == 0)
-                p = new Player("Joueur 3", pionImage[getCurrentPosition(3)]);
+                p = new Player("Joueur 3", pionImage[getCurrentPosition(3)], getAnswerTime(pickerAnswerTime1.getValue()));
             else
-                p = new Player(etPlayer3.getText().toString(), pionImage[getCurrentPosition(3)]);
+                p = new Player(etPlayer3.getText().toString(), pionImage[getCurrentPosition(3)], getAnswerTime(pickerAnswerTime3.getValue()));
             sets.addPlayer(p);
         }
 
         if (sets.getNbPlayer() > 3) {
             if (etPlayer4.getText().length() == 0)
-                p = new Player("Joueur 4", pionImage[getCurrentPosition(4)]);
+                p = new Player("Joueur 4", pionImage[getCurrentPosition(4)], getAnswerTime(pickerAnswerTime1.getValue()));
             else
-                p = new Player(etPlayer4.getText().toString(), pionImage[getCurrentPosition(4)]);
+                p = new Player(etPlayer4.getText().toString(), pionImage[getCurrentPosition(4)], getAnswerTime(pickerAnswerTime4.getValue()));
             sets.addPlayer(p);
+        }
+    }
+
+    private int getAnswerTime(int pickerValue) {
+
+        switch (pickerValue) {
+            case 0:
+                return 15;
+            case 1:
+                return 30;
+            case 2:
+                return 45;
+            default:
+                return 30;
         }
     }
 }

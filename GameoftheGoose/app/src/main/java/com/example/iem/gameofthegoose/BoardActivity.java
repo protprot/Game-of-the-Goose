@@ -2,6 +2,7 @@ package com.example.iem.gameofthegoose;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,10 +43,11 @@ public class BoardActivity extends AppCompatActivity {
 
         //get Settings from MainActivity
         sets = (Settings) getIntent().getSerializableExtra("settings");
+        Log.e("toString", sets.toString());
 
         //show board
         RelativeLayout background = (RelativeLayout) findViewById(R.id.layoutBackground);
-        background.setBackgroundResource(R.drawable.plateau_max);
+        //background.setBackgroundResource(R.drawable.plateau_max);
 
         nbPlayers = sets.getNbPlayer();
 
